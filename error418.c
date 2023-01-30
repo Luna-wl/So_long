@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   error418.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/01/30 14:41:00 by wluedara         ###   ########.fr       */
+/*   Created: 2023/01/30 14:40:19 by wluedara          #+#    #+#             */
+/*   Updated: 2023/01/30 14:48:09 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "./gnl/get_next_line.h"
+void	pim_error(char *s, int mode)
+{
+	int	i;
 
-typedef struct s_game {
-	int	hight;
-	int	width;
-}	t_game;
-
-//check map
-char	*ft_strrchr(const char *str, int c);
-int		ft_strncmp(char *map, char *sth, unsigned int n);
-void	check_map_name(char *map, char *file);
-//error message
-void	pim_error(char *s, int mode);
-
-#endif
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	if (mode == 1)
+		exit(EXIT_FAILURE);
+}

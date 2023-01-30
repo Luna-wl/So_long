@@ -1,6 +1,7 @@
 NAME = so_long
 
-SRCS = so_long.c
+SRCS =	so_long.c check_map.c error418.c\
+		gnl/get_next_line_utils.c gnl/get_next_line.c
 
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
@@ -12,7 +13,7 @@ DEL = rm -rf
 all: $(NAME)
 	
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) $(GNL) -o $(NAME)
 
 clean:
 	$(DEL) $(OBJS)
