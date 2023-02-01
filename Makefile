@@ -1,6 +1,7 @@
 NAME = so_long
 
-SRCS =	so_long.c check_map.c error418.c\
+SRCS =	so_long.c check_map.c error418.c so_long_utils.c read_map.c \
+		my_lovely_split.c \
 		gnl/get_next_line_utils.c gnl/get_next_line.c
 
 CC = gcc
