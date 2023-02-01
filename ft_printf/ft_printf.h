@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error418.c                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 14:40:19 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 16:55:28 by wluedara         ###   ########.fr       */
+/*   Created: 2022/10/01 17:14:33 by sky               #+#    #+#             */
+/*   Updated: 2022/10/02 12:36:39 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	pim_str(char *s)
-{
-	int	i;
+# include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
 
-	i = 0;
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-}
+int		ft_printf(const char *format, ...);
+int		ft_putchar(char c);
+int		ft_putnbr(int num);
+int		ft_putnbr2(unsigned int num, unsigned int base, char flag);
+int		ft_puthex(size_t num);
+int		ft_putstr(char *s);
+int		check_flag(const char *fmt, va_list args);
+int		ft_atoi(const char *str);
 
-void	pim_error(char *s, int mode)
-{
-	pim_str("Error\n");
-	pim_str(s);
-	if (mode == 1)
-		exit(EXIT_FAILURE);
-	else
-		exit(0);
-}
+#endif

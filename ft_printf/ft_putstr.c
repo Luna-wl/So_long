@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error418.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 14:40:19 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 16:55:28 by wluedara         ###   ########.fr       */
+/*   Created: 2022/10/02 12:02:24 by wluedara          #+#    #+#             */
+/*   Updated: 2022/10/07 10:24:54 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-void	pim_str(char *s)
+int	ft_putstr(char *s)
 {
+	int	len;
 	int	i;
 
+	len = 0;
 	i = 0;
-	while (s[i])
+	if (!s)
+		return (write(1, "(null)", 6));
+	while (s[i] != '\0')
 	{
-		write(1, &s[i], 1);
+		len += ft_putchar(s[i]);
 		i++;
 	}
-}
-
-void	pim_error(char *s, int mode)
-{
-	pim_str("Error\n");
-	pim_str(s);
-	if (mode == 1)
-		exit(EXIT_FAILURE);
-	else
-		exit(0);
+	return (len);
 }

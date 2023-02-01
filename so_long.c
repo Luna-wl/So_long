@@ -6,7 +6,7 @@
 /*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:50:54 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 13:51:03 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:44:34 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,4 @@ int	main(int ac, char **av)
 
 //malloc game in main
 //malloc map in read_map.c
-//malloc in split -> lop_split(game->map) after use map;
+//malloc in split -> lop_split(game->map) after use game->map;

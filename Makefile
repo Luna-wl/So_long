@@ -11,12 +11,17 @@ OBJS = $(SRCS:.c=.o)
 
 DEL = rm -rf
 
+# PIM_DIR = ft_printf
+# PIMS = $(PIM_DIR)/ft_printf.a
+
 all: $(NAME)
 	
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) $(GNL) -o $(NAME)
+	# @make -C $(PIM_DIR)
+	$(CC) $(CFLAGS) $(SRCS) $(PIM_DIR) $(GNL) -o $(NAME)
 
 clean:
+	# @make clean -C $(PIM_DIR)
 	$(DEL) $(OBJS)
 
 fclean: clean

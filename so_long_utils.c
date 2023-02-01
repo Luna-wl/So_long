@@ -6,7 +6,7 @@
 /*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 16:51:15 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 13:50:00 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:38:02 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,6 @@ char	*ft_strrchr(const char *str, int c)
 		len--;
 	}
 	return (0);
-}
-
-int	strlen_no_newline(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	return (i);
 }
 
 void	lop_split(char **str)

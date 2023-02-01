@@ -6,7 +6,7 @@
 /*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:12:52 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 14:01:55 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/01 19:34:55 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,20 @@ char	*maps_read(int fd, t_game *game)
 
 void	truat_map(t_game *game, char *line)
 {
-	(void)game;
-	check_player(line);
+	int	len;
+	int	len_map;
+
+	len = ft_strlen(line);
+	len_map = (len - game->hight) + 1;
+	if ((game->hight * game->width) != len_map)
+		pim_error("Do you call this {rectangular}? (☉̃ₒ☉)\n", 0);
+	if (check_kamphaeng(game) == 0)
+		pim_error("Mai me map ti dee kwa ne laew ror? (๑´╹‸╹`๑)\n", 0);
+	nap_player_thang_org(line, len);
+	nap_items(line, len);
+	//forbid characters
+	check_sth(line, len);
+	//playable
 }
 
 void	get_maps(char *file, t_game *game)
@@ -55,14 +67,14 @@ void	get_maps(char *file, t_game *game)
 	if (fd < 0)
 		pim_error("Poet mai dai!!! (ಥ﹏ಥ)\n", 1);
 	map_line = maps_read(fd, game);
+	// printf(PP "map_line =\n%s\n", map_line);
 	game->map = ft_split(map_line, '\n');
 	while (game->map[i])
 	{
-		printf("map[%d] = %s\n", i, game->map[i]);
+		printf(PP "map[%d]", i);
+		printf(CYA " = %s\n", game->map[i]);
 		i++;
 	}
-	// printf("map_line = \n%s\n", map_line);
-	// printf("len map_line = %d\n", ft_strlen(map_line));
 	truat_map(game, map_line);
 	lop_split(game->map);
 	free(map_line);
