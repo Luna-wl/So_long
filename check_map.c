@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:35:54 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 19:35:00 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:41:03 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_map_name(char *map, char *file)
 	ber = ft_strrchr(map, '.');
 	len = ft_strlen(ber);
 	if (ft_strncmp(ber, file, len) != 0)
-		pim_error("Ru jak [.ber] mai kah. つ´Д`)つ\n", 1);
+		pim_error(RED"Ru jak [.ber] mai kah. つ´Д`)つ\n", 1);
 }
 
 void	nap_player_thang_org(char *map, int len)
@@ -40,29 +40,33 @@ void	nap_player_thang_org(char *map, int len)
 			exit++;
 	}
 	if (p == 0)
-		pim_error("Do u know that we need player in game? (´･ω･`)\n", 0);
+		pim_error(GRN"Do u know that we need player in game? (´･ω･`)\n", 0);
 	else if (p > 1)
-		pim_error("Really? player > 1 Σ(￣ロ￣lll)\n", 0);
+		pim_error(YEL"Really? player > 1 Σ(￣ロ￣lll)\n", 0);
 	if (exit == 0)
-		pim_error("Do u know that game must have exit? (╯⊙ ⊱ ⊙╰ )\n", 0);
+		pim_error(BLU"Do u know that game must have exit? (╯⊙ ⊱ ⊙╰ )\n", 0);
 	else if (exit > 1)
-		pim_error("Game can have only 1 exit. _へ__(‾◡◝ )\n", 0);
+		pim_error(PP"Game can have only 1 exit. _へ__(‾◡◝ )\n", 0);
 }
 
-void	nap_items(char *map, int len)
+void	nap_items(char *map, int len, t_game *game)
 {
 	int	i;
 	int	c;
 
 	i = 0;
 	c = 0;
+	game->collect = 0;
 	while (i++ < len)
 	{
 		if (map[i] == 'C')
+		{
+			game->collect++;
 			c++;
+		}
 	}
 	if (c == 0)
-		pim_error("Where is my item? (╬ ≖_≖)つ\n", 0);
+		pim_error(CYA"Where is my item? (╬ ≖_≖)つ\n", 0);
 }
 
 int	check_kamphaeng(t_game *game)
@@ -107,5 +111,5 @@ void	check_sth(char *map, int len)
 			who++;
 	}
 	if (who != 0)
-		pim_error("What have u done with the map? ಠ.ಠ)\n", 0);
+		pim_error(CYA"What have u done with the map? ಠ.ಠ)\n", 0);
 }

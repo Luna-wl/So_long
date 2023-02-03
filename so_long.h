@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 19:35:03 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/02 20:27:03 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "./gnl/get_next_line.h"
-# include "./ft_printf/ft_printf.h"
 
 //color
 # define RESET	"\x1b[0m"
@@ -27,11 +26,18 @@
 # define BLU	"\x1B[34m"
 # define PP		"\x1B[35m"
 # define CYA	"\x1B[36m"
+# define BBY	"\x1B[43;1m"
+# define BBC	"\x1B[46;1m"
+# define BR		"\x1B[41;1m"
+
 
 typedef struct s_game {
 	int		hight;
 	int		width;
 	char	**map;
+	int		collect;
+	int		x;
+	int		y;
 }			t_game;
 
 //utils
@@ -49,7 +55,7 @@ void	get_maps(char *file, t_game *game);
 //check map
 void	check_map_name(char *map, char *file);
 void	nap_player_thang_org(char *map, int len);
-void	nap_items(char *map, int len);
+void	nap_items(char *map, int len, t_game *game);
 int		check_kamphaeng(t_game *game);
 void	check_sth(char *map, int len);
 //error message

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:12:52 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/01 19:34:55 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:45:01 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*maps_read(int fd, t_game *game)
 	{
 		game->hight++;
 		thaeo = get_next_line(fd);
-		if(thaeo)
+		if (thaeo)
 			maps = ft_strjoin(maps, thaeo);
 		free(thaeo);
 	}
@@ -50,10 +50,10 @@ void	truat_map(t_game *game, char *line)
 	if (check_kamphaeng(game) == 0)
 		pim_error("Mai me map ti dee kwa ne laew ror? (๑´╹‸╹`๑)\n", 0);
 	nap_player_thang_org(line, len);
-	nap_items(line, len);
-	//forbid characters
+	nap_items(line, len, game);
+	printf("collect = %d\n", game->collect);
 	check_sth(line, len);
-	//playable
+	len_dai_mai(game);
 }
 
 void	get_maps(char *file, t_game *game)
@@ -71,8 +71,8 @@ void	get_maps(char *file, t_game *game)
 	game->map = ft_split(map_line, '\n');
 	while (game->map[i])
 	{
-		printf(PP "map[%d]", i);
-		printf(CYA " = %s\n", game->map[i]);
+		printf(RED"map[%d]"RESET, i);
+		printf(YEL" = %s\n"RESET, game->map[i]);
 		i++;
 	}
 	truat_map(game, map_line);

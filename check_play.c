@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error418.c                                         :+:      :+:    :+:   */
+/*   check_play.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 14:40:19 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/02 19:41:09 by wluedara         ###   ########.fr       */
+/*   Created: 2023/02/02 19:43:46 by wluedara          #+#    #+#             */
+/*   Updated: 2023/02/02 20:34:11 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	pim_str(char *s)
+void	ha_po_start(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	
 }
 
-void	pim_error(char *s, int mode)
+void	len_dai_mai(t_game *game)
 {
-	pim_str(RED"Error\n"RESET);
-	pim_str(s);
-	if (mode == 1)
-		exit(EXIT_FAILURE);
-	else
-		exit(0);
+	ha_po_start(game);
 }

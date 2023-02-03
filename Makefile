@@ -11,9 +11,6 @@ OBJS = $(SRCS:.c=.o)
 
 DEL = rm -rf
 
-# PIM_DIR = ft_printf
-# PIMS = $(PIM_DIR)/ft_printf.a
-
 all: $(NAME)
 	
 $(NAME): $(OBJS)
