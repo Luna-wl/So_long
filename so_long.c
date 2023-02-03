@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:50:54 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/02 19:42:08 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:47:03 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,4 @@ int	main(int ac, char **av)
 //malloc game in main
 //malloc map in read_map.c
 //malloc in split -> lop_split(game->map) after use game->map;
+//malloc in ft_strdup in check_play.c

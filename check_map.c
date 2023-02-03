@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:35:54 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/02 19:41:03 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/03 10:28:26 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,28 +71,27 @@ void	nap_items(char *map, int len, t_game *game)
 
 int	check_kamphaeng(t_game *game)
 {
-	int	y;
-	int	x;
+	t_game	map;
 
-	y = 0;
-	while (y < game->hight)
+	map.y = 0;
+	while (map.y < game->hight)
 	{
-		x = 0;
-		while (x < game->width)
+		map.x = 0;
+		while (map.x < game->width)
 		{
-			if (y == 0 || y == (game->hight - 1))
+			if (map.y == 0 || map.y == (game->hight - 1))
 			{
-				if (game->map[y][x] != '1')
+				if (game->map[map.y][map.x] != '1')
 					return (0);
 			}
-			else if (x == 0 || x == (game->width - 1))
+			else if (map.x == 0 || map.x == (game->width - 1))
 			{
-				if (game->map[y][x] != '1')
+				if (game->map[map.y][map.x] != '1')
 					return (0);
 			}
-			x++;
+			map.x++;
 		}
-		y++;
+		map.y++;
 	}
 	return (1);
 }

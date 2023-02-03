@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/02 20:27:03 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:37:52 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "./gnl/get_next_line.h"
+# include "./libft/libft.h"
+# include "./libft/ft_printf.h"
+# include "./libft/get_next_line_bonus.h"
 
 //color
 # define RESET	"\x1b[0m"
@@ -36,19 +38,14 @@ typedef struct s_game {
 	int		width;
 	char	**map;
 	int		collect;
+	int		fill_c;
+	int		fill_e;
 	int		x;
 	int		y;
 }			t_game;
 
 //utils
-char	*ft_strrchr(const char *str, int c);
-int		ft_strncmp(char *map, char *sth, unsigned int n);
 void	lop_split(char **str);
-//split
-int		check_word(char *s, char c);
-int		count_letter(char *s, char c);
-char	*my_split(char *s, char c);
-char	**ft_split(char *s, char c);
 //read map
 char	*maps_read(int fd, t_game *game);
 void	get_maps(char *file, t_game *game);
@@ -61,5 +58,10 @@ void	check_sth(char *map, int len);
 //error message
 void	pim_error(char *s, int mode);
 void	pim_str(char *s);
+//flood fill
+void	len_dai_mai(t_game *game);
+void	ha_po_start(t_game *game);
+char	**do_new_map(char **map, t_game *game);
+void	flood(int x, int y, char **map, t_game *game);
 
 #endif

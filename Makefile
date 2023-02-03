@@ -1,8 +1,9 @@
 NAME = so_long
 
-SRCS =	so_long.c check_map.c error418.c so_long_utils.c read_map.c \
-		my_lovely_split.c \
-		gnl/get_next_line_utils.c gnl/get_next_line.c
+SRCS =	so_long.c check_map.c error418.c so_long_utils.c read_map.c check_play.c \
+
+LIB_DIR = libft/
+LIB = $(LIB_DIR)/libft.a
 
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
@@ -14,16 +15,17 @@ DEL = rm -rf
 all: $(NAME)
 	
 $(NAME): $(OBJS)
-	# @make -C $(PIM_DIR)
-	$(CC) $(CFLAGS) $(SRCS) $(PIM_DIR) $(GNL) -o $(NAME)
+	@make -C $(LIB_DIR)
+	@$(CC) $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
 
 clean:
-	# @make clean -C $(PIM_DIR)
-	$(DEL) $(OBJS)
+	@make -C $(LIB_DIR) clean
+	@$(DEL) $(OBJS)
 
 fclean: clean
 	# @say -v Kyoko "ちょっと待って、掃除中"
-	$(DEL) $(NAME)
+	@make -C $(LIB_DIR) fclean
+	@$(DEL) $(NAME)
 	# @cat pic/
 	# @say -v Kyoko "お待たせしました"
 

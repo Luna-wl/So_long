@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:12:52 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/02 19:45:01 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:52:10 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,17 @@ char	*maps_read(int fd, t_game *game)
 
 void	truat_map(t_game *game, char *line)
 {
-	int	len;
-	int	len_map;
+	int		len;
+	int		len_map;
 
 	len = ft_strlen(line);
 	len_map = (len - game->hight) + 1;
 	if ((game->hight * game->width) != len_map)
-		pim_error("Do you call this {rectangular}? (☉̃ₒ☉)\n", 0);
+		pim_error(BLU"Do you call this {rectangular}? (☉̃ₒ☉)\n", 0);
 	if (check_kamphaeng(game) == 0)
-		pim_error("Mai me map ti dee kwa ne laew ror? (๑´╹‸╹`๑)\n", 0);
+		pim_error(CYA"Mai me map ti dee kwa ne laew ror? (๑´╹‸╹`๑)\n", 0);
 	nap_player_thang_org(line, len);
 	nap_items(line, len, game);
-	printf("collect = %d\n", game->collect);
 	check_sth(line, len);
 	len_dai_mai(game);
 }
@@ -65,9 +64,8 @@ void	get_maps(char *file, t_game *game)
 	check_map_name(file, ".ber");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		pim_error("Poet mai dai!!! (ಥ﹏ಥ)\n", 1);
+		pim_error(YEL"Poet mai dai!!! (ಥ﹏ಥ)\n", 1);
 	map_line = maps_read(fd, game);
-	// printf(PP "map_line =\n%s\n", map_line);
 	game->map = ft_split(map_line, '\n');
 	while (game->map[i])
 	{
