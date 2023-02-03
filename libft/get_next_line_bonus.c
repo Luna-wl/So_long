@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 00:27:06 by wluedara          #+#    #+#             */
-/*   Updated: 2022/11/01 17:43:43 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:26:17 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	find_ch(char *str, char c)
 	int	i;
 
 	i = 0;
-	len = ft_strlen(str) + 1;
+	len = ft_strlen_gnl(str) + 1;
 	if (!str)
 		return (0);
 	while (i < len)
@@ -50,7 +50,7 @@ char	*get_read(int fd, char *str)
 	while (byte > 0)
 	{
 		buf[byte] = '\0';
-		str = ft_strjoin(str, buf);
+		str = ft_strjoin_gnl(str, buf);
 		if (find_ch(str, '\n') != -1)
 			break ;
 		byte = read(fd, buf, BUFFER_SIZE);
@@ -70,8 +70,8 @@ char	*get_str(char *str, int len)
 		str = NULL;
 		return (NULL);
 	}
-	len_str = ft_strlen(str) - len;
-	s = ft_substr(str, len, len_str);
+	len_str = ft_strlen_gnl(str) - len;
+	s = ft_substr_gnl(str, len, len_str);
 	free(str);
 	str = NULL;
 	return (s);
@@ -83,10 +83,10 @@ char	*get_new(char *str, int len)
 
 	if (len < 1)
 	{
-		new = ft_substr(str, 0, ft_strlen(str));
+		new = ft_substr_gnl(str, 0, ft_strlen_gnl(str));
 		return (new);
 	}
-	new = my_strdup(str, len);
+	new = my_strdup_gnl(str, len);
 	return (new);
 }
 

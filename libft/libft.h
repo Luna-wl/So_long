@@ -6,7 +6,7 @@
 /*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:12:22 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/03 11:13:15 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:27:20 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include "get_next_line_bonus.h"
-# include "ft_printf.h"
 
 typedef struct s_list
 {
