@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:02:59 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/03 11:11:15 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/04 00:04:45 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	x = 0;
 	while (s2[x] != '\0')
-	{
-		new[i++] = s2[x];
-		x++;
-	}
+		new[i++] = s2[x++];
 	new[i] = '\0';
+	free(s1);
 	return (new);
 }
