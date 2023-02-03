@@ -1,6 +1,12 @@
 NAME = so_long
 
-SRCS =	so_long.c check_map.c error418.c so_long_utils.c read_map.c check_play.c \
+SRCS =	so_long.c check_map.c error418.c read_map.c check_play.c \
+
+RED=\033[0;31;41m
+GREEN=\033[0;32m
+YEL=\033[0;37;47m
+CYA=\033[1;36m
+RESET=\033[0m
 
 LIB_DIR = libft/
 LIB = $(LIB_DIR)/libft.a
@@ -12,14 +18,20 @@ OBJS = $(SRCS:.c=.o)
 
 DEL = rm -rf
 
+%o: %c 
+	@echo "$(RED).....................$(YEL).....................$(RESET)\n"
+	@$(CC) $(CFLAG) -c $< -o $@ 
+
 all: $(NAME)
-	
-$(NAME): $(OBJS)
+
+$(NAME): $(OBJS) mlxnaa
 	@make -C $(LIB_DIR)
-	@$(CC) $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	# @$(CC) $(CFLAGS) $(LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJS)
+	@$(CC) $(CFLAGS) $(LIB) -o $(NAME) $(OBJS)
 
 clean:
 	@make -C $(LIB_DIR) clean
+	# @make -C ./mlx clean
 	@$(DEL) $(OBJS)
 
 fclean: clean
@@ -28,6 +40,10 @@ fclean: clean
 	@$(DEL) $(NAME)
 	# @cat pic/
 	# @say -v Kyoko "お待たせしました"
+
+mlxnaa:
+	@printf "$(GREEN)"
+	make -C ./mlx 2> /dev/null
 
 re: fclean all
 
@@ -42,4 +58,4 @@ norm:
 	# @say -v Kanya "ขอบคุณที่รอ"
 	@echo "---- THANK YOU ^w^Y ----"
 
-.PHONY: norm clean fclean all re
+.PHONY: norm clean fclean mlxnaa all re

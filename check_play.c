@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_play.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:43:46 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/03 16:24:04 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/03 23:13:27 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	flood(int x, int y , char **map, t_game *game)
 		return ;
 	if (x < 0 || y < 0 || x > game->width || y > game->hight || map[y][x] == '1')
 		return ;
-	// if (game->fill_c != game->collect && game->fill_e != 1)
-	// 	pim_error("-w-\n", 0);
 	if (map[y][x] == 'C')
 		game->fill_c++;
 	if (map[y][x] == 'E')
@@ -82,16 +80,11 @@ void	len_dai_mai(t_game *game)
 	game->fill_c = 0;
 	game->fill_e = 0;
 	flood(map.x, map.y, new_map, game);
-	printf("collect = %d\n", game->fill_c);
-	printf("exit = %d\n", game->fill_e);
 	if (game->fill_c != game->collect && game->fill_e != 1)
-		pim_error("-w-\n", 0);
+		pim_error("-w-\n", game, 0);
 	// for (int i = 0; new_map[i]; i++)
 	// {
 		// printf("map[%d] = %s\n", i, new_map[i]);
 	// }
-	// for (int i = 0; game->map[i]; i++)
-	// {
-	// 	printf("map[%d] = %s\n", i, game->map[i]);
-	// }
+	lop_song_stars(new_map);
 }
