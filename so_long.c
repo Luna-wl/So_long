@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:50:54 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/04 00:18:17 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/04 15:14:38 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ void	init(t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	// t_mlx	*mlx;
+	t_mlx	*mlx;
+
 	game = NULL;
+	mlx = NULL;
 	if (ac == 2)
 	{
 		game = malloc(sizeof(t_game));
-		// mlx = malloc(sizeof(t_mlx));
+		mlx = malloc(sizeof(t_mlx));
 		init(game);
 		get_maps(av[1], game);
 		// sesame_mlx(game, mlx);

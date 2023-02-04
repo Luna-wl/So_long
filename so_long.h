@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/03 23:16:07 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/04 15:15:53 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include "./libft/get_next_line_bonus.h"
 # include "./mlx/mlx.h"
 
+# ifndef KEY_H
+#  define KEY_H
 # define X_EVENT_KEY_EXIT		17
 # define KEY_CTRL				56
 # define KEY_ENTER				36
@@ -35,7 +37,7 @@
 # define KEY_D					2
 # define KEY_W					13
 # define KEY_R					15
-
+# endif
 //color
 # define RESET	"\x1b[0m"
 # define RED	"\x1B[31m"
@@ -76,7 +78,8 @@ typedef struct s_game {
 //utils
 void	lop_song_stars(char **str);
 //read map
-char	*maps_read(int fd, t_game *game);
+// char	*maps_read(int fd, t_game *game);
+void	maps_read(int fd, t_game *game);
 void	get_maps(char *file, t_game *game);
 //check map
 void	check_map_name(char *map, char *file, t_game *game);
