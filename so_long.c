@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:50:54 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/04 15:14:38 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/06 22:23:28 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	init(t_game *game)
-{
-	game->collect = 0;
-	game->fill_c = 0;
-	game->fill_e = 0;
-	game->hight = 0;
-	game->width = 0;
-	game->x = 0;
-	game->y = 0;
-	game->map = NULL;
-}
 
 int	main(int ac, char **av)
 {

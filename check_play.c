@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_play.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:43:46 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/03 23:13:27 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/07 00:13:32 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ha_po_start(t_game *game)
 	t_game	map;
 
 	map.y = 0;
-	while (map.y < game->hight)
+	while (map.y < game->high)
 	{
 		map.x = 0;
 		while (map.x < game->width)
@@ -38,7 +38,7 @@ char	**do_new_map(char **map, t_game *game)
 	char	**tmp;
 	int		i;
 
-	tmp = malloc(sizeof(char *) * (game->hight + 1));
+	tmp = malloc(sizeof(char *) * (game->high + 1));
 	if (!tmp)
 		return (0);
 	i = 0;
@@ -55,7 +55,7 @@ void	flood(int x, int y , char **map, t_game *game)
 {
 	if (map == NULL)
 		return ;
-	if (x < 0 || y < 0 || x > game->width || y > game->hight || map[y][x] == '1')
+	if (x < 0 || y < 0 || x > game->width || y > game->high || map[y][x] == '1')
 		return ;
 	if (map[y][x] == 'C')
 		game->fill_c++;
@@ -84,7 +84,7 @@ void	len_dai_mai(t_game *game)
 		pim_error("-w-\n", game, 0);
 	// for (int i = 0; new_map[i]; i++)
 	// {
-		// printf("map[%d] = %s\n", i, new_map[i]);
+	// 	printf("map[%d] = %s\n", i, new_map[i]);
 	// }
 	lop_song_stars(new_map);
 }

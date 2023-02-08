@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
+/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/04 15:15:53 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:11:51 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_mlx {
 }			t_mlx;
 
 typedef struct s_game {
-	int		hight;
+	int		high;
 	int		width;
 	char	**map;
 	int		collect;
@@ -76,17 +76,22 @@ typedef struct s_game {
 }			t_game;
 
 //utils
+int		nab_line(char *file, t_game *game);
+void	init(t_game *game);
 void	lop_song_stars(char **str);
 //read map
-// char	*maps_read(int fd, t_game *game);
-void	maps_read(int fd, t_game *game);
+void	maps_read(char *file, t_game *game);
 void	get_maps(char *file, t_game *game);
 //check map
+int		strlen_no_newline(char *str);
+void	check_siliam(t_game *game);
+void	truat_map(t_game *game);
 void	check_map_name(char *map, char *file, t_game *game);
-void	nap_player_thang_org(char *map, int len, t_game *game);
-void	nap_items(char *map, int len, t_game *game);
+void	nap_player(t_game *game);
+void	nap_thang_org(t_game *game);
+void	nap_items(t_game *game);
 int		check_kamphaeng(t_game *game);
-void	check_sth(char *map, int len, t_game *game);
+void	check_sth(t_game *game);
 //error message
 void	pim_error(char *s, t_game *game, int mode);
 void	pim_str(char *s);

@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS =	so_long.c check_map.c error418.c read_map.c check_play.c \
+SRCS =	so_long.c check_map.c error418.c read_map.c check_play.c check_map_too.c\
 		# open_natang.c 
 
 RED=\033[0;31;41m
