@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/07 13:11:51 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:13:14 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ typedef struct s_mlx {
 	void	*collectible;
 	void	*floor;
 	void	*wall;
-	int		width;
-	int		hight;
+	int		start_x;
+	int		start_y;
+	int		kao;
+	int		collect;
 }			t_mlx;
 
 typedef struct s_game {
@@ -76,10 +78,10 @@ typedef struct s_game {
 }			t_game;
 
 //utils
-int		nab_line(char *file, t_game *game);
 void	init(t_game *game);
 void	lop_song_stars(char **str);
 //read map
+void	nab_line(char *file, t_game *game);
 void	maps_read(char *file, t_game *game);
 void	get_maps(char *file, t_game *game);
 //check map
@@ -101,9 +103,22 @@ void	ha_po_start(t_game *game);
 char	**do_new_map(char **map, t_game *game);
 void	flood(int x, int y, char **map, t_game *game);
 //mlx
-void	sesame_mlx(t_game *game, t_mlx *mlx);
-int		key_hook(int key_code, t_mlx *mlx);
+int		pid_win(t_mlx *mlx);
 void	komnod(t_mlx *mlx, t_game *game);
-void	pid_win(t_mlx *mlx);
+void	copy_map(t_game *game, t_mlx *mlx);
+int		key_hook(int key_code, t_mlx *mlx);
+void	sesame_mlx(t_game *game, t_mlx *mlx);
+//walking
+int		check_walking(t_mlx *mlx, int x, int y);
+void	end_game(t_mlx *mlx);
+void	dern_keun(t_mlx *mlx, int x, int y);
+void	dern_long(t_mlx *mlx, int x, int y);
+void	dern_sai(t_mlx *mlx, int x, int y);
+void	dern_kwa(t_mlx *mlx, int x, int y);
+//free
+void	free_game(t_game *game);
+void	free_my_mlx(t_mlx *mlx);
+//show map
+void	pim_map(t_mlx *mlx);
 
 #endif

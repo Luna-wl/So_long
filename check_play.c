@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_play.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:43:46 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/07 00:13:32 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/08 16:55:24 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,5 @@ void	len_dai_mai(t_game *game)
 	flood(map.x, map.y, new_map, game);
 	if (game->fill_c != game->collect && game->fill_e != 1)
 		pim_error("-w-\n", game, 0);
-	// for (int i = 0; new_map[i]; i++)
-	// {
-	// 	printf("map[%d] = %s\n", i, new_map[i]);
-	// }
 	lop_song_stars(new_map);
 }

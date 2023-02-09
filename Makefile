@@ -1,7 +1,7 @@
 NAME = so_long
 
 SRCS =	so_long.c check_map.c error418.c read_map.c check_play.c check_map_too.c\
-		# open_natang.c 
+		open_natang.c dern.c
 
 RED=\033[0;31;41m
 GREEN=\033[0;32m
@@ -27,12 +27,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS) mlxnaa
 	@make -C $(LIB_DIR)
-	# @$(CC) $(CFLAGS) $(LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJS)
-	@$(CC) $(CFLAGS) $(LIB) -o $(NAME) $(OBJS)
+	@$(CC) $(CFLAGS) $(LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJS)
+	# @$(CC) $(CFLAGS) $(LIB) -o $(NAME) $(OBJS)
 
 clean:
 	@make -C $(LIB_DIR) clean
-	# @make -C ./mlx clean
+	@make -C ./mlx clean
 	@$(DEL) $(OBJS)
 
 fclean: clean

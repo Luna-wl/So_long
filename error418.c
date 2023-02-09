@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:40:19 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/04 00:19:38 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:43:12 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ void	pim_str(char *s)
 		write(1, &s[i], 1);
 		i++;
 	}
+}
+
+void	free_game(t_game *game)
+{
+	if (game->map)
+		lop_song_stars(game->map);
+	free(game);
+}
+
+void	free_my_mlx(t_mlx *mlx)
+{
+	if (mlx->map)
+		lop_song_stars(mlx->map);
+	free(mlx);
 }
 
 void	pim_error(char *s, t_game *game, int mode)

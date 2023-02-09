@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 17:12:52 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/07 13:16:47 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/09 12:45:18 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,23 @@ void	init(t_game *game)
 	game->map = NULL;
 }
 
-int	nab_line(char *file, t_game *game)
+void	nab_line(char *file, t_game *game)
 {
 	int		fd;
-	int		count;
 	char	*line;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		pim_error(YEL"Poet mai dai!!! (ಥ﹏ಥ)\n", game, 1);
 	line = get_next_line(fd);
-	count = 0;
 	while (line != NULL)
 	{
-		count++;
+		game->high++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	free(line);
 	close(fd);
-	return (count);
 }
 
 void	maps_read(char *file, t_game *game)
@@ -53,9 +50,9 @@ void	maps_read(char *file, t_game *game)
 	int		line;
 
 	i = 0;
-	line = nab_line(file, game);
+	nab_line(file, game);
 	fd = open(file, O_RDONLY);
-	game->map = malloc(sizeof(char *) * (line + 1));
+	game->map = malloc(sizeof(char *) * (game->high + 1));
 	if (!game->map)
 		return ;
 	game->map[i] = get_next_line(fd);
@@ -63,7 +60,6 @@ void	maps_read(char *file, t_game *game)
 	while (game->map[i])
 	{
 		i++;
-		game->high++;
 		game->map[i] = get_next_line(fd);
 	}
 	close(fd);
@@ -85,12 +81,5 @@ void	get_maps(char *file, t_game *game)
 {
 	check_map_name(file, ".ber", game);
 	maps_read(file, game);
-	printf(BLU"high[%d]"RESET, game->high);
-	printf(BLU"width[%d]"RESET, game->width);
-	// for (int i = 0; game->map[i]; i++)
-	// {
-	// 	printf(YEL"map[%d] = %s"RESET, i, game->map[i]);
-	// }
-	// printf("\n");
 	truat_map(game);
 }
