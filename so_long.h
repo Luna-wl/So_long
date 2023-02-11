@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/09 17:13:14 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:58:50 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,36 @@
 # define BBC	"\x1B[46;1m"
 # define BR		"\x1B[41;1m"
 
+typedef struct s_xy {
+	int		x;
+	int		y;
+}			t_xy;
+
+typedef struct s_img {
+	void	*player;
+	void	*enemy;
+	void	*exit;
+	void	*collect;
+	void	*floor;
+	void	*wall;
+}			t_img;
+
 typedef struct s_mlx {
 	char	**map;
 	void	*win;
 	void	*init;
-	void	*player;
-	void	*enemy;
-	void	*exit;
-	void	*collectible;
-	void	*floor;
-	void	*wall;
+	t_img	img;
+	int		size;
 	int		start_x;
 	int		start_y;
+	int		exit_x;
+	int		exit_y;
+	int		pre_e_x;
+	int		pre_e_y;
 	int		kao;
 	int		collect;
+	int		row;
+	int		col;
 }			t_mlx;
 
 typedef struct s_game {
@@ -76,7 +92,10 @@ typedef struct s_game {
 	int		x;
 	int		y;
 }			t_game;
+//global
+t_xy	g_xy;
 
+void	init_xy(void);
 //utils
 void	init(t_game *game);
 void	lop_song_stars(char **str);
@@ -117,8 +136,15 @@ void	dern_sai(t_mlx *mlx, int x, int y);
 void	dern_kwa(t_mlx *mlx, int x, int y);
 //free
 void	free_game(t_game *game);
-void	free_my_mlx(t_mlx *mlx);
+void	free_my_mlx(t_mlx *mlx); 
 //show map
 void	pim_map(t_mlx *mlx);
+//render
+void	render_game(t_mlx *mlx);
+void	render_floor(t_mlx *mlx);
+void	render_wall(t_mlx *mlx);
+void	render_player(t_mlx *mlx);
+void	render_collectible(t_mlx *mlx);
+void	render_exit(t_mlx *mlx);
 
 #endif

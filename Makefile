@@ -1,7 +1,7 @@
 NAME = so_long
 
-SRCS =	so_long.c check_map.c error418.c read_map.c check_play.c check_map_too.c\
-		open_natang.c dern.c
+SRCS =	so_long.c check_map.c error418.c read_map.c check_play.c check_map_too.c \
+		open_natang.c dern.c check_dern.c render_game.c render_game_too.c
 
 RED=\033[0;31;41m
 GREEN=\033[0;32m

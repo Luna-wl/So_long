@@ -6,24 +6,11 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 20:33:04 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/09 16:39:30 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:49:02 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	pim_map(t_mlx *mlx)
-{
-	int	i;
-
-	i = 0;
-	while (mlx->map[i])
-	{
-		ft_printf(CYA"%s"RESET, mlx->map[i]);
-		i++;
-	}
-	write(1, "\n", 1);
-}
 
 int	pid_win(t_mlx *mlx)
 {
@@ -37,14 +24,19 @@ void	komnod(t_mlx *mlx, t_game *game)
 {
 	mlx->win = 0;
 	mlx->init = 0;
-	mlx->player = 0;
-	mlx->enemy = 0;
-	mlx->exit = 0;
-	mlx->collectible = 0;
-	mlx->collect = game->collect;
-	mlx->floor = 0;
-	mlx->wall = 0;
+	mlx->img.player = 0;
+	mlx->img.enemy = 0;
+	mlx->img.exit = 0;
+	mlx->img.collect = 0;
+	mlx->img.floor = 0;
+	mlx->img.wall = 0;
 	mlx->kao = 0;
+	mlx->exit_x = 0;
+	mlx->exit_y = 0;
+	mlx->size = 64;
+	mlx->collect = game->collect;
+	mlx->col = game->high;
+	mlx->row = game->width;
 	mlx->start_x = game->x;
 	mlx->start_y = game->y;
 	copy_map(game, mlx);
@@ -89,9 +81,11 @@ void	sesame_mlx(t_game *game, t_mlx *mlx)
 	mlx->init = mlx_init();
 	mlx->win = mlx_new_window(mlx->init, game->width * 64, game->high * 64,\
 	"My awesome So_long >3<");
-	free(game);
+	render_floor(mlx);
+	render_game(mlx);
+	free_game(game);
 	mlx_hook(mlx->win, 17, 1L<<0, pid_win, mlx);
 	mlx_key_hook(mlx->win, key_hook, mlx);
-	// mlx_loop_hook(mlx->win, key_hook, mlx);
+	// mlx_loop_hook(mlx->win, , mlx);
 	mlx_loop(mlx->init);
 }
