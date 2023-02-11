@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 19:43:46 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/08 16:55:24 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:25:53 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**do_new_map(char **map, t_game *game)
 	return (tmp);
 }
 
-void	flood(int x, int y , char **map, t_game *game)
+void	flood(int x, int y, char **map, t_game *game)
 {
 	if (map == NULL)
 		return ;
@@ -81,6 +81,6 @@ void	len_dai_mai(t_game *game)
 	game->fill_e = 0;
 	flood(map.x, map.y, new_map, game);
 	if (game->fill_c != game->collect && game->fill_e != 1)
-		pim_error("-w-\n", game, 0);
+		pim_error(PP"Len mai dai nah ╭∩╮（︶︿︶）╭∩╮\n"RESET, game, 0);
 	lop_song_stars(new_map);
 }

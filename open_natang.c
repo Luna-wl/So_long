@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 20:33:04 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/10 23:49:02 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/11 18:42:05 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@ int	pid_win(t_mlx *mlx)
 	return (0);
 }
 
+void	pic_player(t_mlx *mlx)
+{
+	mlx->img.p1 = "./image/P.xpm";
+	mlx->img.p2 = "./image/P2.xpm";
+	mlx->img.p3 = "./image/P3.xpm";
+}
+
 void	komnod(t_mlx *mlx, t_game *game)
 {
 	mlx->win = 0;
 	mlx->init = 0;
+	pic_player(mlx);
 	mlx->img.player = 0;
-	mlx->img.enemy = 0;
 	mlx->img.exit = 0;
 	mlx->img.collect = 0;
 	mlx->img.floor = 0;
@@ -79,13 +86,13 @@ void	sesame_mlx(t_game *game, t_mlx *mlx)
 {
 	komnod(mlx, game);
 	mlx->init = mlx_init();
-	mlx->win = mlx_new_window(mlx->init, game->width * 64, game->high * 64,\
+	mlx->win = mlx_new_window(mlx->init, mlx->row * 64, mlx->col * 64, \
 	"My awesome So_long >3<");
 	render_floor(mlx);
 	render_game(mlx);
 	free_game(game);
-	mlx_hook(mlx->win, 17, 1L<<0, pid_win, mlx);
+	mlx_hook(mlx->win, 17, 1L << 0, pid_win, mlx);
 	mlx_key_hook(mlx->win, key_hook, mlx);
-	// mlx_loop_hook(mlx->win, , mlx);
+	mlx_loop_hook(mlx->init, looping, mlx);
 	mlx_loop(mlx->init);
 }

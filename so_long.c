@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 13:50:54 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/10 00:15:30 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:06:00 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int ac, char **av)
 		sesame_mlx(game, mlx);
 	}
 	else if (ac > 2)
-		pim_error(BBC"Disculpe?, Do u know how to run this project? (눈_눈)\n", game, 1);
+		pim_error(BBC"Disculpe?, Do u know how to run this project? (눈_눈)\n", \
+		game, 1);
 	else
 		pim_error(BLU"Mai me map kah!! (ノಠ益ಠ)ノ彡┻━┻\n", game, 1);
 	return (0);

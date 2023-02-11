@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_too.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wluedara <wluedara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 00:11:43 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/07 13:14:00 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:20:55 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	check_siliam(t_game *game)
 {
 	t_game	map;
 	int		line;
-	
+
 	map.y = 0;
 	line = 0;
 	while (map.y < game->high)

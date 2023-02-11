@@ -6,7 +6,7 @@
 /*   By: wluedara <Warintorn_L@outlook.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 16:52:33 by wluedara          #+#    #+#             */
-/*   Updated: 2023/02/10 23:58:50 by wluedara         ###   ########.fr       */
+/*   Updated: 2023/02/11 18:43:20 by wluedara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <time.h>
 # include "./libft/libft.h"
 # include "./libft/ft_printf.h"
 # include "./libft/get_next_line_bonus.h"
@@ -23,20 +24,20 @@
 
 # ifndef KEY_H
 #  define KEY_H
-# define X_EVENT_KEY_EXIT		17
-# define KEY_CTRL				56
-# define KEY_ENTER				36
-# define KEY_SPACE				49
-# define KEY_ESC				53
-# define KEY_LEFT				123
-# define KEY_RIGHT				124
-# define KEY_UP					126
-# define KEY_DOWN				125
-# define KEY_A					0
-# define KEY_S					1
-# define KEY_D					2
-# define KEY_W					13
-# define KEY_R					15
+#  define X_EVENT_KEY_EXIT		17
+#  define KEY_CTRL				56
+#  define KEY_ENTER				36
+#  define KEY_SPACE				49
+#  define KEY_ESC				53
+#  define KEY_LEFT				123
+#  define KEY_RIGHT				124
+#  define KEY_UP					126
+#  define KEY_DOWN				125
+#  define KEY_A					0
+#  define KEY_S					1
+#  define KEY_D					2
+#  define KEY_W					13
+#  define KEY_R					15
 # endif
 //color
 # define RESET	"\x1b[0m"
@@ -56,8 +57,10 @@ typedef struct s_xy {
 }			t_xy;
 
 typedef struct s_img {
+	void	*p1;
+	void	*p2;
+	void	*p3;
 	void	*player;
-	void	*enemy;
 	void	*exit;
 	void	*collect;
 	void	*floor;
@@ -136,15 +139,23 @@ void	dern_sai(t_mlx *mlx, int x, int y);
 void	dern_kwa(t_mlx *mlx, int x, int y);
 //free
 void	free_game(t_game *game);
-void	free_my_mlx(t_mlx *mlx); 
+void	free_my_mlx(t_mlx *mlx);
 //show map
 void	pim_map(t_mlx *mlx);
 //render
 void	render_game(t_mlx *mlx);
 void	render_floor(t_mlx *mlx);
-void	render_wall(t_mlx *mlx);
-void	render_player(t_mlx *mlx);
-void	render_collectible(t_mlx *mlx);
-void	render_exit(t_mlx *mlx);
+void	render_wall(t_mlx *mlx, int y, int x);
+void	render_player(t_mlx *mlx, int y, int x);
+void	render_collectible(t_mlx *mlx, int y, int x);
+void	render_exit(t_mlx *mlx, int y, int x);
+// void	render_wall(t_mlx *mlx);
+// void	render_player(t_mlx *mlx);
+// void	render_collectible(t_mlx *mlx);
+// void	render_exit(t_mlx *mlx);
+//walking
+int		looping(t_mlx *mlx);
+//bonus
+void	display_step(t_mlx *mlx);
 
 #endif
